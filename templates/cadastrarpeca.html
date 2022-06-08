@@ -1,0 +1,63 @@
+<!-- Herdando o código do template.html via jinja -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Atende</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+    <script type="text/javascript">
+        function checkinputs(){
+            var peca = ticketform.peca.value;
+            var nserie = ticketform.nserie.value;
+
+            if (peca === '' || nserie === '')
+            {
+                alert('Favor preencher todos os campos!')
+                return false;
+            }
+            return true
+        }
+    </script>
+</head>
+<body>
+    <nav id="menu-h">
+        <ul>
+            <li><a href="#">Painel de Controle</a></li>
+            <li><a href="#">Gerenciamento</a>
+            <ul>
+                <li><a href="/gerenciamentotickets">Tickets</a></li>
+                <li><a href="/gerenciamentobalancas">Balanças</a></li>
+                <li><a href="/gerenciamentoautorizadas">Autorizadas</a></li>
+                <li><a href="/gerenciamentorevendas">Revendas</a></li>
+                <li><a href="/gerenciamentopecas">Peças</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Configurações</a>
+        <ul>
+        <li><a href="/gerenciamentousuarios">Usuarios</a></li>
+        </ul>
+        </li>
+            <li id="sair"><a href="#">Sair</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+    <h1>Cadastrar Peça</h1>
+    <h2>Dados gerais</h2>
+    <section>
+    <form name="ticketform" name="peca" class="form" action="/inserepeca" method="post">
+            <div class="form-group">
+                <label for="peca" class="label">Nome da peça:*</label>
+                <input type="text" id="peca" name="peca" class="form-control" maxlength="255">
+            </div>
+            <div class="form-group">
+                <label for="nserie" class="label">Número de série:*</label>
+                <input type="number" id="nserie" name="nserie" class="form-control" maxlength="255">
+            </div>
+            <input id="button" class="btnedit" onclick="return checkinputs()" type="submit" value="Cadastrar">
+    </form>
+    </section>
+</div>
+</body>
+</html>
