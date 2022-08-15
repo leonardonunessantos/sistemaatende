@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Atende</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+</head>
+<body>
+    <nav id="menu-h">
+        <ul>
+            <li><a href="/paineldecontrole">Painel de Controle</a></li>
+            <li><a href="#">Gerenciamento</a>
+            <ul>
+                <li><a href="/gerenciamentotickets">Tickets</a></li>
+                <li><a href="/gerenciamentobalancas">Balanças</a></li>
+                <li><a href="/gerenciamentoautorizadas">Autorizadas</a></li>
+                <li><a href="/gerenciamentorevendas">Revendas</a></li>
+                <li><a href="/gerenciamentopecas">Peças</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Configurações</a>
+        <ul>
+        <li><a href="/gerenciamentousuarios">Usuarios</a></li>
+        </ul>
+        </li>
+            <li id="sair"><a href="#">Sair</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+    <h1>Editar Usuário</h1>
+    <h2>Dados gerais</h2>
+    <section>
+    <form name="editarusuario" class="form" method="post" action="/editarusuario/{{usuario.id}}">
+            <!-- Revenda tem que ser Select Box, depois fazer pegar do banco-->
+            <div class="form-group">
+                <label for="nomecompleto" class="label">Nome completo:*</label>
+                <input type="text" name="nomecompleto" class="form-control" required value="{{usuario.nomecompleto}}">
+            </div>
+            <div class="form-group">
+                <label for="email" class="label">E-mail:*</label>
+                <input type="text" name="email" class="form-control" required value="{{usuario.email}}">
+            </div>
+            <div class="form-group">
+                <label for="cargo" class="label">Cargo:*</label>
+                <input type="text" name="cargo" class="form-control" required value="{{usuario.cargo}}">
+            </div>
+            <div class="form-group">
+                <label for="senha" class="label">Senha:*</label>
+                <input type="text" name="senha" class="form-control" required value="{{usuario.senha}}">
+            </div>
+            <div class="buttons">
+            <button class="btnedit" type="submit">Salvar</button>
+            </div>
+    </form>
+    </section>
+</div>
+</body>
+</html>

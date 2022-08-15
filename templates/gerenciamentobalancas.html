@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Atende</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+</head>
+<body>
+    <nav id="menu-h">
+        <ul>
+            <li><a href="/paineldecontrole">Painel de Controle</a></li>
+            <li><a href="#">Gerenciamento</a>
+            <ul>
+                <li><a href="/gerenciamentotickets">Tickets</a></li>
+                <li><a href="/gerenciamentobalancas">Balanças</a></li>
+                <li><a href="/gerenciamentoautorizadas">Autorizadas</a></li>
+                <li><a href="/gerenciamentorevendas">Revendas</a></li>
+                <li><a href="/gerenciamentopecas">Peças</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Configurações</a>
+        <ul>
+        <li><a href="/gerenciamentousuarios">Usuarios</a></li>
+        </ul>
+        </li>
+            <li id="sair"><a href="#">Sair</a></li>
+        </ul>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <h1>Gerenciamento de Balanças</h1>
+    <div class="container">
+    <br>
+    <a href="/cadastrarbalanca" class="btn btn-success" id="btn_prin">Cadastrar balança</a>
+    <br>
+    <br>
+    <table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Balança</th>
+            <th>Número de série</th>
+            <th>Opções</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for balanca in balancas %}  <!--O Jinja deixa colocar cod no HTML-->
+        <tr>
+            <td>{{ balanca.id }}</td>
+            <td>{{ balanca.balanca }}</td>
+            <td>{{ balanca.nserie }}</td>
+            <td>
+                <a href="/editarbalanca/{{ balanca.id }}" class="btn" methods="GET">Editar</a> 
+                <a href="/excluirbalanca/{{ balanca.id }}" class="btn">Excluir</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+</div>
+</body>
+</html>
