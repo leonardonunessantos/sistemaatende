@@ -1,0 +1,61 @@
+{% extends "template.html" %}
+{% block conteudo %}
+        <h1>Painel de Controle</h1>
+        <br>
+        <br>
+        <div id="tickets">
+            <p>Tickets</p>
+            <br>
+            <p>{{ n_ticket }}</p>
+        </div>
+        <div id="revendas">
+            <p>Revendas</p>
+            <br>
+            <p>{{ n_revenda }}</p>
+        </div>
+        <div id="autorizadas">
+            <p>Autorizadas</p>
+            <br>
+            <p>{{ n_autorizada }}</p>
+        </div>
+        <br>
+        <br>
+        <br>
+        <h2>Tickets em aberto</h2>
+        <br>
+        <form method="POST" action="/gerenciamentotickets">
+            <p><button class="btn btn-primary" type="submit">Gerenciamento de tickets</button></p>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Revenda</th>
+                    <th>Autorizada</th>
+                    <th>Data de abertura</th>
+                    <th>Status</th>
+                    <th>Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for ticket in tickets %}  <!--O Jinja deixa colocar cod no HTML-->
+            {% if ticket.status != "Finalizado" %}
+                <tr>
+                    <td>{{ ticket.id }}</td>
+                    <td>{{ ticket.revenda }}</td>
+                    <td>{{ ticket.autorizada }}</td>
+                    <td>{{ ticket.dataabertura }}</td>
+                    <td>{{ ticket.status }}</td>
+                    <td>
+                        <a href="/verticket/{{ ticket.id }}" class="btn" methods="GET">Ver Ticket</a>
+                        {% if ticket.status != "Finalizado" %}
+                            <a href="/editarticket/{{ ticket.id }}" class="btn" methods="GET">Editar</a>
+                        {% endif %}   
+                        <a href="/excluirticket/{{ ticket.id }}" class="btn">Excluir</a>
+                    </td>
+                </tr>
+            {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+{% endblock %}

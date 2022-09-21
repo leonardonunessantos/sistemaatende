@@ -1,0 +1,42 @@
+{% extends "template.html" %}
+{% block conteudo %}
+        <br>
+    <br>
+    <br>
+    <h1>Gerenciamento de Tickets</h1>
+    <br>
+    <a href="/abrirticket" class="btn btn-success" id="btn_prin">Abrir Ticket</a>
+    <br>
+    <br>
+    <table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Revenda</th>
+            <th>Autorizada</th>
+            <th>Data de abertura</th>
+            <th>Status</th>
+            <th>Opções</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for ticket in tickets %}  <!--O Jinja deixa colocar cod no HTML-->
+        <tr>
+            <td>{{ ticket.id }}</td>
+            <td>{{ ticket.revenda }}</td>
+            <td>{{ ticket.autorizada }}</td>
+            <td>{{ ticket.dataabertura }}</td>
+            <td>{{ ticket.status }}</td>
+            <td>
+                <a href="/verticket/{{ ticket.id }}" class="btn" methods="GET">Ver Ticket</a>
+                {% if ticket.status != "Finalizado" %}
+                    <a href="/editarticket/{{ ticket.id }}" class="btn" methods="GET">Editar</a>
+                {% endif %}   
+                <a href="/excluirticket/{{ ticket.id }}" class="btn">Excluir</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

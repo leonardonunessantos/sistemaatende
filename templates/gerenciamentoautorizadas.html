@@ -1,0 +1,37 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <br>
+    <br>
+    <br>
+    <h1>Gerenciamento de Autorizadas</h1>
+    <br>
+    <a href="/cadastrarautorizada" class="btn btn-success" id="btn_prin">Cadastrar Autorizada</a>
+    <br>
+    <br>
+    <table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Autorizada</th>
+            <th>Estado</th>
+            <th>Cidade</th>
+            <th>Opções</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for autorizada in autorizadas %}  <!--O Jinja deixa colocar cod no HTML-->
+        <tr>
+            <td>{{ autorizada.id }}</td>
+            <td>{{ autorizada.autorizada }}</td>
+            <td>{{ autorizada.estado }}</td>
+            <td>{{ autorizada.cidade }}</td>
+            <td>
+                <a href="/editarautorizada/{{ autorizada.id }}" class="btn" methods="GET">Editar</a> 
+                <a href="/excluirautorizada/{{ autorizada.id }}" class="btn">Excluir</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

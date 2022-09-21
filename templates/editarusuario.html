@@ -1,0 +1,29 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <h1>Editar Usuário</h1>
+    <h2>Dados gerais</h2>
+    <section>
+    <form name="editarusuario" class="form" method="post" action="/editarusuario/{{usuario.id}}">
+            <!-- Revenda tem que ser Select Box, depois fazer pegar do banco-->
+            <div class="form-group">
+                <label for="nomecompleto" class="label">Nome completo:*</label>
+                <input type="text" name="nomecompleto" class="form-control" required value="{{usuario.nomecompleto}}">
+            </div>
+            <div class="form-group">
+                <label for="email" class="label">E-mail:*</label>
+                <input type="text" name="email" class="form-control" required value="{{usuario.email}}">
+            </div>
+            <div class="form-group">
+                <label for="cargo" class="label">Cargo:*</label>
+                <input type="text" name="cargo" class="form-control" required value="{{usuario.cargo}}">
+            </div>
+            <div class="form-group">
+                <label for="senha" class="label">Senha:*</label>
+                <input type="text" name="senha" class="form-control" required value="{{usuario.senha}}">
+            </div>
+            <div class="buttons">
+            <button class="btnedit" type="submit">Salvar</button>
+            </div>
+    </form>
+    </section>
+{% endblock %}

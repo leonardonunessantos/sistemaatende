@@ -1,0 +1,35 @@
+{% extends "template.html" %}
+{% block conteudo %}
+        <br>
+    <br>
+    <br>
+    <h1>Gerenciamento de Peças</h1>
+    <br>
+    <a href="/cadastrarpeca" class="btn btn-success" id="btn_prin">Cadastrar peça</a>
+    <br>
+    <br>
+    <table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Peça</th>
+            <th>Número de série</th>
+            <th>Opções</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for peca in pecas %}  <!--O Jinja deixa colocar cod no HTML-->
+        <tr>
+            <td>{{ peca.id }}</td>
+            <td>{{ peca.peca }}</td>
+            <td>{{ peca.nserie }}</td>
+            <td>
+                <a href="/editarpeca/{{ peca.id }}" class="btn" methods="GET">Editar</a> 
+                <a href="/excluirpeca/{{ peca.id }}" class="btn">Excluir</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

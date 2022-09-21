@@ -1,0 +1,37 @@
+{% extends "template.html" %}
+{% block conteudo %}
+        <br>
+    <br>
+    <br>
+    <h1>Gerenciamento de Revendas</h1>
+    <br>
+    <a href="/cadastrarrevenda" class="btn btn-success" id="btn_prin">Cadastrar Revenda</a>
+    <br>
+    <br>
+    <table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Revenda</th>
+            <th>Estado</th>
+            <th>Cidade</th>
+            <th>Opções</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for revenda in revendas %}  <!--O Jinja deixa colocar cod no HTML-->
+        <tr>
+            <td>{{ revenda.id }}</td>
+            <td>{{ revenda.revenda }}</td>
+            <td>{{ revenda.estado }}</td>
+            <td>{{ revenda.cidade }}</td>
+            <td>
+                <a href="/editarrevenda/{{ revenda.id }}" class="btn" methods="GET">Editar</a> 
+                <a href="/excluirrevenda/{{ revenda.id }}" class="btn">Excluir</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

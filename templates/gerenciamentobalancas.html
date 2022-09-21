@@ -1,0 +1,35 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <br>
+    <br>
+    <br>
+    <h1>Gerenciamento de Balanças</h1>
+    <br>
+    <a href="/cadastrarbalanca" class="btn btn-success" id="btn_prin">Cadastrar balança</a>
+    <br>
+    <br>
+    <table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Balança</th>
+            <th>Número de série</th>
+            <th>Opções</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for balanca in balancas %}  <!--O Jinja deixa colocar cod no HTML-->
+        <tr>
+            <td>{{ balanca.id }}</td>
+            <td>{{ balanca.balanca }}</td>
+            <td>{{ balanca.nserie }}</td>
+            <td>
+                <a href="/editarbalanca/{{ balanca.id }}" class="btn" methods="GET">Editar</a> 
+                <a href="/excluirbalanca/{{ balanca.id }}" class="btn">Excluir</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

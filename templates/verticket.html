@@ -1,0 +1,72 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <h1>Ticket {{ticket.id}}</h1>
+    <h2>Dados gerais</h2>
+    <form name="verticket" class="form">
+            <!-- Revenda tem que ser Select Box, depois fazer pegar do banco-->
+            <div class="form-group">
+                <label for="revenda" class="label">Nome da Revenda:*</label>
+                <input type="text" name="revenda" class="form-control" disabled value="{{ticket.revenda}}">
+            </div>
+            <div class="form-group">
+                <label for="telefone" class="label">Telefone para contato:*</label>
+                <input type="text" class="form-control" disabled maxlength="11" minlength="10" placeholder="(xx) x xxxx-xxxx" name="telefone" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;" value="{{ticket.telefone}}">
+                <!-- Esse código faz com que só aceite numeros no campo input.-->
+                <!-- Fiz isso para conseguir limitar o campo para min e max 11 caracteres.-->
+            </div>
+            <!-- Estado tem que ser Select Box, depois fazer pegar do banco -->
+            <div class="form-group">
+                <label for="uf" class="label">Estado:*</label>
+                <input type="text" name="uf" class="form-control" disabled value="{{ticket.telefone}}">
+            </div>
+            <!-- Cidade tem que ser Select Box, depois fazer pegar do banco -->
+            <div class="form-group">
+                <label for="cidade" class="label">Cidade:*</label>
+                <input type="text" name="cidade" class="form-control" disabled value="{{ticket.cidade}}">
+            </div>
+            <!-- Modelo tem que ser Select Box, depois fazer pegar do banco-->
+            <div class="form-group">
+                <label for="modelo" class="label">Modelo da balança:*</label>
+                <input type="text" name="modelo" class="form-control" disabled value="{{ticket.modelo}}">
+            </div>
+            <div class="form-group">
+                <label for="datacompra" class="label">Data da compra:*</label>
+                <input type="date" name="datacompra" class="form-control" disabled value="{{ticket.datacompra}}">
+            </div>
+            <div class="radiobutton">
+                <label for="datacompra" class="label">{{ticket.garantia}}</label>
+                <input type="radio" name="garantia" value="Com Garantia" required disabled="" checked>
+            </div>
+            <div class="form-group">
+                <label for="reclamacao" class="label">Reclamação:*</label>
+                <textarea name="reclamacao" id="reclamacao" class="form-control" cols="100" rows="10" maxlength="500" disabled>{{ticket.reclamacao}}</textarea>
+            </div>
+            <!-- Autorizada tem que ser Select Box, depois fazer pegar do banco-->
+            <div class="form-group">
+                <label for="autorizada" class="label">Autorizada:*</label>
+                <input type="text" name="autorizada" class="form-control" disabled value="{{ticket.autorizada}}">
+            </div>
+    <br>
+    <h2>Resolução</h2>
+    <div class="form-group">
+        <label for="resolucao" class="label">Resolução:</label>
+        <textarea name="resolucao" id="resolucao" class="form-control" cols="100" rows="10" maxlength="500" disabled>{{ticket.resolucao}}</textarea>
+    </div>
+            <div class="form-group">
+                <label for="maodeobra" class="label">Mão de obra:</label>
+                <input type="number" name="maodeobra" class="form-control" value="{{ticket.maodeobra}}" disabled>
+            </div>
+            <div class="form-group">
+                <label for="notafiscal" class="label">Número da Nota Fiscal:</label>
+                <input type="text" name="notafiscal" class="form-control" value="{{ticket.notafiscal}}" disabled>
+            </div>
+            <div class="form-group">
+                <label for="frete" class="label">Valor do frete:</label>
+                <input type="text" name="frete" class="form-control" value="{{ticket.frete}}" disabled>
+            </div>
+            <div class="form-group">
+                <label for="envio" class="label">Tipo de envio:</label>
+                <input type="text" name="envio" class="form-control" value="{{ticket.envio}}" disabled>
+            </div>
+    </form>
+{% endblock %}

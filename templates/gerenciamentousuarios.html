@@ -1,0 +1,35 @@
+{% extends "template.html" %}
+{% block conteudo %}
+        <br>
+    <br>
+    <br>
+    <h1>Gerenciamento de Usuários</h1>
+    <br>
+    <a href="/cadastrarusuario" class="btn btn-success" id="btn_prin">Cadastrar usuário</a>
+    <br>
+    <br>
+    <table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Cargo</th>
+            <th>Opções</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for usuario in usuarios %}  <!--O Jinja deixa colocar cod no HTML-->
+        <tr>
+            <td>{{ usuario.nomecompleto }}</td>
+            <td>{{ usuario.email }}</td>
+            <td>{{ usuario.cargo }}</td>
+            <td>
+                <a href="/editarusuario/{{ usuario.id }}" class="btn" methods="GET">Editar</a> 
+                <a href="/excluirusuario/{{ usuario.id }}" class="btn">Excluir</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
